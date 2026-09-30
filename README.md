@@ -22,3 +22,4 @@ Berikut ini adalah spesifikasi laprop yang saya gunakan:
 - Node.js: v24.21.0
 - npm: v11.19.0
 - Git: v2.52.0.windows.1 
+- Laragon : v8.2.12
