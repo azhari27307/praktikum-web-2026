@@ -14,7 +14,7 @@
 Berikut ini adalah spesifikasi laprop yang saya gunakan:
 - Sistem Operasi: Windows 11 Home Single Language 64-bit
 - Model Laptop : ASUS Vivobook M3400QA
-- Prosessor :
+- Prosessor : AMD Ryzen 7 5800H with Radeon Graphics
 - RAM: 16 GB
 - GPU: AMD Radeon Graphics
 - DirectX: DirectX 12
