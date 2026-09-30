@@ -2,7 +2,7 @@
 **Informasi Mahasiswa:**
 * **Nama:** [Azhari Ahmad Fauzani]
 * **NIM:** [2406107]
-* **Kelas/Prodi:** Teknik Informatika - ITG
+* **Kelas/Prodi:** Teknik Informatika A - ITG
 * **Kode MK:** IFRWP5151
 ---
 ## Catatan Modul 1
