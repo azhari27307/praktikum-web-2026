@@ -13,7 +13,7 @@ body {
 }
 /* Header */
 body > header {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     padding: 20px;
     border-bottom: 1px solid #ddd;
 }
@@ -53,8 +53,10 @@ main {
 }
 
 section{
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     padding: 25px;
+    border-radius: 0.50cm;
+    margin: 10px;
 }
 
 /*gambar*/
@@ -148,7 +150,7 @@ footer{
 }
 /* Garis <hr> */
 hr{
-    display: -moz-deck;
+    display: none;
 }
 
 /* Tampilan HP */
