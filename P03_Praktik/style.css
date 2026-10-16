@@ -7,42 +7,49 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f1f5f9;
+    background-color: #edf2fa;
     color: #334155;
     line-height: 1.7;
 }
 /* Header */
 body > header {
-    background-color: rgb(255, 255, 255);
+    background: linear-gradient(135deg, #263a63, #435b91);
     padding: 20px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 4px solid #b9a6e8;
+    box-shadow: 0 3px 12px rgba(38, 58, 99, 0.15);
 }
 
 body > header h1 {
     max-width: 900px;
     margin: auto;
-
+    color: #ffffff;
 }
 
 /* Navigation */
 nav {
     max-width: 900px;
-    margin: auto;
+    margin: 10 px auto 0;
 }
 
 nav ul {
     display: flex;
-    gap: 20px;
+    gap: 12px;
     list-style: none;
+    flex-wrap: wrap;
 }
 
 nav a {
-    color: #333;
+    display: inline-block;
+    color: #eef2ff;
     text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: 0.3s;
 }
 
 nav a:hover {
-    color: #0d6efd;
+    color: #263a63;
+    background-color: #e9e3f8;
 }
 
 /*main*/
@@ -53,10 +60,12 @@ main {
 }
 
 section{
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffff;
     padding: 25px;
-    border-radius: 0.50cm;
-    margin: 10px;
+    border: 1px solid #dbe4f2;
+    border-radius: 16px;
+    margin: 15px 0;
+    box-shadow: 0 4px 12px rgba(38, 58, 99, 0.07);
 }
 
 /*gambar*/
@@ -66,13 +75,19 @@ main img {
     max-width: 100%;
     height: auto;
     margin: 0;
+    margin: 15px auto;
+    border-radius: 10px;
 }
 
 /*judul*/
 h2 {
+    color: #354f85;
     margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #dce5f5;
 }
 h3 {
+    color: #334155;
     margin-bottom: 5px;
 }
 
@@ -82,12 +97,19 @@ h3 {
 
 }
 article{
-    padding: 15px 0;
-    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    margin: 8px 0;
+    background-color: #f2f5fc;
+    border-left: 3px solid #8b80c5;
+    border-radius: 6px;
 }
 
 article:last-child {
     border-bottom: none;
+}
+
+article h3 {
+    color: #526aa0;
 }
 
 form {
@@ -100,6 +122,7 @@ form p {
 label{
     display: inline-block;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 input[type="text"],
@@ -107,9 +130,20 @@ input[type="email"],
 select,
 textarea{
     width: 100%;
-    padding: 9px;
-    border: 1px solid #ccc;
-    font-family: arial, sans-serif;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    background-color: #f8faff;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #7b78bd;
+    box-shadow: 0 0 0 3px rgba(123, 120, 189, 0.15);
 }
 
 textarea{
@@ -117,35 +151,43 @@ textarea{
 }
 
 button{
-    padding: 9px 15px;
+    padding: 10px 16px;
     border: none;
-    background-color: #333;
+    border-radius: 7px;
+    background-color: #0d6efd;
     color: white;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 button[type="reset"]{
-    background-color: #888;
+    background-color: #64748b;
 }
 
 button:hover{
-    opacity: 0.8;
+    opacity: 0.85;
+    transform: translateY(-1px);
 }
 
 /* Aside */
 aside{
-    max-width: 900px;
+    max-width: 860px;
     margin: 30px auto;
     padding: 20px;
-    background-color: white;
-    border-left: 3px solid #0d6efd;
+    background-color: #e4eafa;
+    color: #35476b;
+    border-left: 4px solid #8b80c5;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 3px 10px rgba(38, 58, 99, 0.05);
 }
 
 /* Footer */
 footer{
-    padding: 20px;
+    padding: 22px;
     text-align: center;
-    color: #777;
+    background-color: #263a63;
+    color: #e4eafa;
+    border-top: 4px solid #b9a6e8;
     font-size: 14px;
 }
 /* Garis <hr> */
@@ -155,17 +197,25 @@ hr{
 
 /* Tampilan HP */
 @media (max-widht: 700px){
+    body > header h1 {
+        font-size: 24px;
+    }
     nav ul {
         flex-direction: column;
         gap: 8px;
     }
     main {
         margin-top: 20px;
+        padding: 0 15px;
     }
     main img {
-        margin: 0 auto;
+        margin: 10px auto;
     }
     section{
-        padding: 20px
+        padding: 20px;
+        margin: 12px 0;
+    }
+    aside {
+        margin: 20px 15px;
     }
 }
