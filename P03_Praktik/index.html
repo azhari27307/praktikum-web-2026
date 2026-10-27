@@ -27,23 +27,75 @@
             </section>
             <hr>
             <section id="proyek">
-                <h2>Proyek Unggulan</h2>
-                <article>
-                    <header>
-                        <h3>1. Sistem Manajemen Inventori Database</h3>
-                        <p>Teknologi : HTML, CSS, JavaScript, MySQL | Tahun : <time datetime="2026"></time>2026</time></p>
-
-                    </header>
-                    <p>Aplikasi web berbasis lokal untuk mencatat dan mengelola sirkulasi baranag secara efisien terintegrasi dengan database MySQL</p>
-                </article>
-                <article>
-                    <header>
-                        <h3>2. Aplikasi Kasir & Perhitungan Transaksi</h3>
-                        <p>Teknologi: JavaScript ES6+ | Tahun <time datetime="2026">2026</time></p>
-                    </header>
-                    <p>Program Logika pemrosesan transaksi belanja yang menghitung total bayar dan diskon berbasis Array of Objects</p>
-                </article>
-
+                <h2>Interactive Portfolio Tracker</h2>
+            
+                <div id="statistik">
+                    <article>
+                        <h3>Total Proyek</h3>
+                        <p id="total-proyek">0</p>
+                    </article>
+                    <article>
+                        <h3>Total Anggaran</h3>
+                        <p id="total-anggaran">Rp0</p>
+                    </article>
+                    <article>
+                        <h3>Proyek Selesai</h3>
+                        <p id="proyek-selesai">0</p>
+                    </article>
+                </div>
+            
+                <h3>Tambah Proyek Baru</h3>
+                <form id="form-proyek">
+                    <p>
+                        <label for="judul-proyek">Nama Proyek</label>
+                        <input type="text" id="judul-proyek" required>
+                    </p>
+                    <p>
+                        <label for="kategori-proyek">Kategori</label>
+                        <select id="kategori-proyek" required>
+                            <option value="">-- Pilih Kategori --</option>
+                            <option value="Web App">Web App</option>
+                            <option value="Mobile App">Mobile App</option>
+                            <option value="Desktop App">Desktop App</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="anggaran-proyek">Anggaran (Rp)</label>
+                        <input type="number" id="anggaran-proyek" min="1" required>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="checkbox" id="status-proyek">
+                            Proyek sudah selesai
+                        </label>
+                    </p>
+                    <button type="submit">Tambah Proyek</button>
+                </form>
+            
+                <hr>
+            
+                <h3>Daftar Proyek</h3>
+                <p>
+                    <label for="pencarian-proyek">Cari Proyek</label>
+                    <input type="text" id="pencarian-proyek"
+                           placeholder="Ketik nama proyek...">
+                </p>
+            
+                <p>
+                    <label for="filter-kategori">Filter Kategori</label>
+                    <select id="filter-kategori">
+                        <option value="Semua">Semua Kategori</option>
+                        <option value="Web App">Web App</option>
+                        <option value="Mobile App">Mobile App</option>
+                        <option value="Desktop App">Desktop App</option>
+                        <option value="UI/UX Design">UI/UX Design</option>
+                    </select>
+                </p>
+            
+                <div id="daftar-proyek">
+                    <p>Daftar proyek akan ditampilkan di sini.</p>
+                </div>
             </section>
             <hr>
         </main>
@@ -58,5 +110,6 @@
             <footer>
                 <p>&copy; 2026 Portofolio Mahasiswa - All Rights Reserved</p>
             </footer>
+            <script src="main.js"></script>
     </body>
 </html>
