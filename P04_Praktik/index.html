@@ -1,37 +1,80 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Portofolio Proyek - Modul 4</title>
+    <title>Interactive Portfolio Tracker</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; }
         body { background-color: #f1f5f9; color: #0f172a; padding: 30px 15px; }
         .container { max-width: 800px; margin: 0 auto; background: #ffffff; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
         h1 { color: #1e3a8a; font-size: 24px; margin-bottom: 5px; }
         p.subtitle { color: #64748b; margin-bottom: 20px; font-size: 14px; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }
+        h2 { font-size: 18px; color: #1e3a8a; margin-bottom: 15px; }
+        .form-section { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; margin-bottom: 25px; }
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; }
+        .checkbox-group { display: flex; align-items: center; gap: 8px; margin-bottom: 15px; font-size: 14px; }
+        .checkbox-group input { width: auto; }
+        .btn-add { padding: 10px 16px; border: none; background: #1e3a8a; color: white; border-radius: 6px; cursor: pointer; font-weight: 600; }
+        .btn-add:hover { background: #1e40af; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 25px; }
         .stat-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; text-align: center; }
         .stat-card h3 { font-size: 13px; color: #64748b; text-transform: uppercase; margin-bottom: 5px; }
-        .stat-card p { font-size: 20px; font-weight: bold; color: #1e3a8a; }
+        .stat-card p { font-size: 20px; font-weight: bold; color: #1e3a8a; overflow-wrap: anywhere; }
+        .search-input { width: 100%; padding: 11px; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 15px; font-size: 14px; }
         .filter-group { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
-        .btn-filter { padding: 8px 16px; border: 1px solid #cbd5e1; background: #ffffff; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; transition: all 0.2s; }
+        .btn-filter { padding: 8px 12px; border: 1px solid #cbd5e1; background: #ffffff; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500; }
         .btn-filter.active, .btn-filter:hover { background: #1e3a8a; color: #ffffff; border-color: #1e3a8a; }
-        .project-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; background: #ffffff; transition: transform 0.15s ease; }
-        .project-card:hover { transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .project-info h4 { font-size: 16px; color: #0f172a; margin-bottom: 4px; }
+        .project-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; gap: 12px; background: #ffffff; }
+        .project-info { min-width: 0; }
+        .project-info h4 { font-size: 16px; color: #0f172a; margin-bottom: 6px; overflow-wrap: anywhere; }
         .project-category { display: inline-block; font-size: 12px; color: #0284c7; background: #e0f2fe; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; font-weight: 600; }
         .project-budget { font-size: 14px; color: #334155; font-weight: 600; }
-        .badge { padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
         .badge-success { background: #dcfce7; color: #166534; }
         .badge-pending { background: #fef9c3; color: #854d0e; }
+        .project-actions { display: flex; flex-direction: column; gap: 7px; flex-shrink: 0; }
+        .btn-action { padding: 7px 10px; border: none; border-radius: 5px; cursor: pointer; font-size: 12px; font-weight: 600; }
+        .btn-toggle { background: #dbeafe; color: #1e40af; }
+        .btn-delete { background: #fee2e2; color: #b91c1c; }
+        .empty-message { text-align: center; color: #64748b; padding: 20px; }
+        @media (max-width: 480px) { body { padding: 15px 8px; } .container { padding: 15px; } .project-card { align-items: flex-start; } .project-actions { max-width: 110px; } .btn-action { padding: 7px 6px; } }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Portofolio Proyek</h1>
-        <p class="subtitle">Modul 4: Pengolahan Logika Data & Interaktivitas DOM</p>
-        <!-- Kartu Ringkasan Statistik -->
+        <p class="subtitle">Interactive Portfolio Tracker - Modul 4</p>
+        <div class="form-section">
+            <h2>Tambah Proyek Baru</h2>
+            <form id="project-form">
+                <div class="form-group">
+                    <label for="project-title">Judul Proyek</label>
+                    <input type="text" id="project-title" placeholder="Masukkan judul proyek">
+                </div>
+                <div class="form-group">
+                    <label for="project-category">Kategori</label>
+                    <select id="project-category">
+                        <option value="Web App">Web App</option>
+                        <option value="Mobile App">Mobile App</option>
+                        <option value="Desktop App">Desktop App</option>
+                        <option value="UI/UX Design">UI/UX Design</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="project-budget">Estimasi Anggaran (Rp)</label>
+                    <input type="number" id="project-budget" placeholder="Masukkan anggaran" min="1" step="1">
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="project-completed">
+                    <label for="project-completed">Sudah Selesai</label>
+                </div>
+                <button type="submit" class="btn-add">Tambah Proyek</button>
+            </form>
+        </div>
         <div class="stats-grid">
             <div class="stat-card">
                 <h3>Total Proyek</h3>
@@ -46,14 +89,15 @@
                 <p id="stat-completed-projects">0</p>
             </div>
         </div>
-        <!-- Tombol Filter Kategori -->
+        <h2>Daftar Proyek</h2>
+        <input type="text" id="search-project" class="search-input" placeholder="Cari nama proyek...">
         <div class="filter-group">
-            <button class="btn-filter active" data-category="Semua">Semua Proyek</button>
-            <button class="btn-filter" data-category="Web App">Web App</button>
-            <button class="btn-filter" data-category="Desktop App">Desktop App</button>
-            <button class="btn-filter" data-category="Mobile App">Mobile App</button>
+            <button type="button" class="btn-filter active" data-category="Semua">Semua Proyek</button>
+            <button type="button" class="btn-filter" data-category="Web App">Web App</button>
+            <button type="button" class="btn-filter" data-category="Desktop App">Desktop App</button>
+            <button type="button" class="btn-filter" data-category="Mobile App">Mobile App</button>
+            <button type="button" class="btn-filter" data-category="UI/UX Design">UI/UX Design</button>
         </div>
-        <!-- Kontainer Daftar Proyek -->
         <div id="project-list"></div>
     </div>
     <script src="main.js"></script>
