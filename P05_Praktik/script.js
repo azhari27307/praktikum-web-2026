@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputError = document.querySelector("#inputError");
     const todoList = document.querySelector("#todoList");
 
+    // Elemen tambahan untuk tugas mandiri
+    const taskCounter = document.querySelector("#taskCounter");
+    const clearCompletedBtn = document.querySelector("#clearCompletedBtn");
+
     // 2. Fungsi membaca dan menyimpan ke LocalStorage
     const getTasks = () => JSON.parse(localStorage.getItem("todo_tasks")) || [];
     const saveTasks = (tasks) => localStorage.setItem("todo_tasks", JSON.stringify(tasks));
@@ -16,6 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const renderTasks = () => {
         const tasks = getTasks();
         todoList.innerHTML = "";
+
+        // Menghitung jumlah tugas
+        const totalTasks = tasks.length;
+        const completedTasks = tasks.filter(task => task.completed).length;
+        const uncompletedTasks = totalTasks - completedTasks;
+
+        // Menampilkan jumlah tugas ke halaman
+        taskCounter.textContent = `Total: ${totalTasks} Tugas | Selesai: ${completedTasks} | Belum Selesai: ${uncompletedTasks}`;
 
         if (tasks.length === 0) {
             todoList.innerHTML = "<p style='text-align:center; color:#64748b; font-size:13px; padding:10px;'>Belum ada tugas tersimpan.</p>";
@@ -73,11 +85,29 @@ document.addEventListener("DOMContentLoaded", () => {
             tasks[index].completed = !tasks[index].completed;
             saveTasks(tasks);
             renderTasks();
+
         } else if (e.target.classList.contains("delete-btn")) {
-            tasks.splice(index, 1);
-            saveTasks(tasks);
-            renderTasks();
+
+            // Konfirmasi sebelum menghapus tugas
+            const konfirmasi = confirm("Apakah Anda yakin ingin menghapus tugas ini?");
+
+            if (konfirmasi) {
+                tasks.splice(index, 1);
+                saveTasks(tasks);
+                renderTasks();
+            }
         }
+    });
+
+    // 6. Bersihkan semua tugas yang sudah selesai
+    clearCompletedBtn.addEventListener("click", () => {
+        const tasks = getTasks();
+
+        // Mempertahankan tugas yang belum selesai
+        const remainingTasks = tasks.filter(task => !task.completed);
+
+        saveTasks(remainingTasks);
+        renderTasks();
     });
 
     // Render pertama kali saat halaman selesai dimuat

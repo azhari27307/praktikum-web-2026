@@ -1,3 +1,4 @@
+
 * {box-sizing: border-box; margin: 0; padding: 0; }
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -21,13 +22,26 @@ button.add-btn {
 button.add-btn:hover { background-color: #1e40af; }
 .error-message { color: #dc3545; font-size: 12px; margin-bottom: 14px; display: none;
 }
+
+.task-counter {
+    background-color: #eff6ff;
+    color: #1e40af;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
 .todo-list { list-style: none; margin-top: 14px; }
 .todo-item {
     display: flex; align-items: center; justify-content: space-between;
     padding: 10px 12px; background-color: #f1f5f9; border-radius: 6px; margin-bottom:
 8px;
 }
-.todo-item.completed { border-left-color: #16a34a; opacity: 0.7; }
+.todo-item.completed { border-left: 4px solid #16a34a; opacity: 0.7; }
 .todo-item.completed .todo-text { text-decoration: line-through; color: #64748b; }
 .todo-text { font-size: 14px; flex: 1; margin-right: 10px; }
 .todo-actions { display: flex; gap: 6px; }
@@ -36,6 +50,21 @@ button.add-btn:hover { background-color: #1e40af; }
 pointer; font-weight: bold;
 }
 .complete-btn {background-color: #16a34a; color: white;}
-.complete-btn {background-color: #15803d; }
+.complete-btn:hover {background-color: #15803d;}
 .delete-btn { background-color: #dc2626; color: white;}
 .delete-btn:hover { background-color: #b91c1c;}
+
+.clear-btn {
+    width: 100%;
+    background-color: #dc2626;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 12px;
+}
+.clear-btn:hover {
+    background-color: #b91c1c;
+}
